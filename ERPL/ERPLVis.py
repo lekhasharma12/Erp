@@ -3,14 +3,12 @@ from ERPLListener import ERPLListener as EL
 from ERPLParser import ERPLParser
 import sqlite3
 
-
-
 class ERPLVis(EV, EL) :
     idP = []
     idR = []
     idT = {}
+    dbname = ''
 
-    conn = sqlite3.connect('test.db')
 
     def visitS(self, ctx:ERPLParser.SContext):
         return super().visitS(ctx)
@@ -29,26 +27,51 @@ class ERPLVis(EV, EL) :
     def visitA(self, ctx:ERPLParser.AContext):
         return super().visitA(ctx)
 
+    def create_table(self):
+        try:
+            c = sqlite3.connect(ERPLVis.dbname+'.db').cursor()
+            f = open('create.txt')
+            st = ''
+            for line in f:
+                st = st + line
+            c.execute(st)
+            return c
+        except Exception as e:
+            print(e)
 
-    # Visit a parse tree produced by ERPLParser#r.
-    def visitR(self, ctx:ERPLParser.RContext):
-        self.idR.append(ctx.ID().getText())
-        print(ERPLVis.idR)
-        return super().visitR(ctx)
+    def insert_role(role_name):
+        sql = 'INSERT INTO roles(name) VALUES(?)'
+        cur = sqlite3.connect(ERPLVis.dbname+'.db').cursor()
+        cur.execute(sql, (role_name))
 
+    def insert_task(task_name, role_name):
+        sql = 'INSERT INTO bar (description, foo_id) VALUES( ?, ?),'
+        cur = sqlite3.connect(ERPLVis.dbname+'.db').cursor()
+        cur.execute(sql, (task_name, 'SELECT id from roles WHERE type=' + role_name))
 
     # Visit a parse tree produced by ERPLParser#p.
     def visitP(self, ctx:ERPLParser.PContext):
         self.idP.append(ctx.ID().getText())
         print(ERPLVis.idP)
+        global dbname
+        dbname = ctx.ID().getText()
+        conn = sqlite3.connect(ERPLVis.dbname + '.db')
+        c = ERPLVis.create_table(self)
         return super().visitP(ctx)
 
+    # Visit a parse tree produced by ERPLParser#r.
+    def visitR(self, ctx: ERPLParser.RContext):
+        self.idR.append(ctx.ID().getText())
+        print(ERPLVis.idR)
+        ERPLVis.insert_role(ctx.ID().getText())
+        return super().visitR(ctx)
 
     # Visit a parse tree produced by ERPLParser#t.
     def visitT(self, ctx:ERPLParser.TContext):
         a = list(ctx.ID())
         self.idT[a[0].getText()] = a[1].getText()
         print(ERPLVis.idT)
+        ERPLVis.insert_task(a[0].getText(), a[1].getText())
         return super().visitT(ctx)
 
 
