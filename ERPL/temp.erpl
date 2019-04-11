@@ -1,8 +1,10 @@
 def role student
 def role hod
+
 def process leave_application
 add task apply : student
 add task approve : hod
 end process
+
 exit
 

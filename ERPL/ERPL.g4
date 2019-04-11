@@ -23,7 +23,7 @@ q : a+ EXIT ;
 a : r+ p+;
 r : DEF WS ROLE WS ID NEWLINE ;
 p : DEF WS PROCESS WS ID NEWLINE t+ END WS PROCESS NEWLINE;
-t : ADD WS TASK WS ID WS ':' WS ID NEWLINE ;
+t : ADD WS (STARTTASK |TASK) WS ID WS ':' WS ID NEWLINE ;
 
 DEF : 'def' ;
 EXIT : 'exit';
@@ -31,6 +31,7 @@ ADD : 'add' ;
 PROCESS : 'process' ;
 ROLE : 'role' ;
 TASK : 'task' ;
+STARTTASK : 'start task' ;
 END : 'end' ;
 ID : [A-Za-z_]+ ;
 WS : (' ' | '\t') ;
