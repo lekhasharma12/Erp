@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS roles (
+ id integer PRIMARY KEY,
+ name text NOT NULL,
+);
+CREATE TABLE IF NOT EXISTS tasks (
+ id integer PRIMARY KEY,
+ name text NOT NULL,
+ role_id integer NOT NULL,
+ FOREIGN KEY (project_id) REFERENCES roles (id)
+);

@@ -39,5 +39,10 @@ class ERPLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ERPLParser#i.
+    def visitI(self, ctx:ERPLParser.IContext):
+        return self.visitChildren(ctx)
+
+
 
 del ERPLParser

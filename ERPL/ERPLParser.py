@@ -8,28 +8,33 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16")
-        buf.write("D\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2")
-        buf.write("\3\2\3\3\6\3\22\n\3\r\3\16\3\23\3\3\3\3\3\4\6\4\31\n\4")
-        buf.write("\r\4\16\4\32\3\4\6\4\36\n\4\r\4\16\4\37\3\5\3\5\3\5\3")
-        buf.write("\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\6\6\60\n\6")
-        buf.write("\r\6\16\6\61\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3")
-        buf.write("\7\3\7\3\7\3\7\3\7\3\7\3\7\2\2\b\2\4\6\b\n\f\2\3\3\2\t")
-        buf.write("\n\2A\2\16\3\2\2\2\4\21\3\2\2\2\6\30\3\2\2\2\b!\3\2\2")
-        buf.write("\2\n(\3\2\2\2\f8\3\2\2\2\16\17\5\4\3\2\17\3\3\2\2\2\20")
-        buf.write("\22\5\6\4\2\21\20\3\2\2\2\22\23\3\2\2\2\23\21\3\2\2\2")
-        buf.write("\23\24\3\2\2\2\24\25\3\2\2\2\25\26\7\5\2\2\26\5\3\2\2")
-        buf.write("\2\27\31\5\b\5\2\30\27\3\2\2\2\31\32\3\2\2\2\32\30\3\2")
-        buf.write("\2\2\32\33\3\2\2\2\33\35\3\2\2\2\34\36\5\n\6\2\35\34\3")
-        buf.write("\2\2\2\36\37\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \7\3\2")
-        buf.write("\2\2!\"\7\4\2\2\"#\7\r\2\2#$\7\b\2\2$%\7\r\2\2%&\7\f\2")
-        buf.write("\2&\'\7\16\2\2\'\t\3\2\2\2()\7\4\2\2)*\7\r\2\2*+\7\7\2")
-        buf.write("\2+,\7\r\2\2,-\7\f\2\2-/\7\16\2\2.\60\5\f\7\2/.\3\2\2")
-        buf.write("\2\60\61\3\2\2\2\61/\3\2\2\2\61\62\3\2\2\2\62\63\3\2\2")
-        buf.write("\2\63\64\7\13\2\2\64\65\7\r\2\2\65\66\7\7\2\2\66\67\7")
-        buf.write("\16\2\2\67\13\3\2\2\289\7\6\2\29:\7\r\2\2:;\t\2\2\2;<")
-        buf.write("\7\r\2\2<=\7\f\2\2=>\7\r\2\2>?\7\3\2\2?@\7\r\2\2@A\7\f")
-        buf.write("\2\2AB\7\16\2\2B\r\3\2\2\2\6\23\32\37\61")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17")
+        buf.write("T\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("\t\b\3\2\3\2\3\3\6\3\24\n\3\r\3\16\3\25\3\3\3\3\3\4\6")
+        buf.write("\4\33\n\4\r\4\16\4\34\3\4\6\4 \n\4\r\4\16\4!\3\4\6\4%")
+        buf.write("\n\4\r\4\16\4&\5\4)\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3")
+        buf.write("\6\3\6\3\6\3\6\3\6\3\6\3\6\6\69\n\6\r\6\16\6:\3\6\3\6")
+        buf.write("\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3")
+        buf.write("\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\2\2\t\2\4\6\b\n\f\16")
+        buf.write("\2\3\3\2\t\n\2R\2\20\3\2\2\2\4\23\3\2\2\2\6(\3\2\2\2\b")
+        buf.write("*\3\2\2\2\n\61\3\2\2\2\fA\3\2\2\2\16L\3\2\2\2\20\21\5")
+        buf.write("\4\3\2\21\3\3\2\2\2\22\24\5\6\4\2\23\22\3\2\2\2\24\25")
+        buf.write("\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2\26\27\3\2\2\2\27")
+        buf.write("\30\7\5\2\2\30\5\3\2\2\2\31\33\5\b\5\2\32\31\3\2\2\2\33")
+        buf.write("\34\3\2\2\2\34\32\3\2\2\2\34\35\3\2\2\2\35\37\3\2\2\2")
+        buf.write("\36 \5\n\6\2\37\36\3\2\2\2 !\3\2\2\2!\37\3\2\2\2!\"\3")
+        buf.write("\2\2\2\")\3\2\2\2#%\5\16\b\2$#\3\2\2\2%&\3\2\2\2&$\3\2")
+        buf.write("\2\2&\'\3\2\2\2\')\3\2\2\2(\32\3\2\2\2($\3\2\2\2)\7\3")
+        buf.write("\2\2\2*+\7\4\2\2+,\7\16\2\2,-\7\b\2\2-.\7\16\2\2./\7\r")
+        buf.write("\2\2/\60\7\17\2\2\60\t\3\2\2\2\61\62\7\4\2\2\62\63\7\16")
+        buf.write("\2\2\63\64\7\7\2\2\64\65\7\16\2\2\65\66\7\r\2\2\668\7")
+        buf.write("\17\2\2\679\5\f\7\28\67\3\2\2\29:\3\2\2\2:8\3\2\2\2:;")
+        buf.write("\3\2\2\2;<\3\2\2\2<=\7\13\2\2=>\7\16\2\2>?\7\7\2\2?@\7")
+        buf.write("\17\2\2@\13\3\2\2\2AB\7\6\2\2BC\7\16\2\2CD\t\2\2\2DE\7")
+        buf.write("\16\2\2EF\7\r\2\2FG\7\16\2\2GH\7\3\2\2HI\7\16\2\2IJ\7")
+        buf.write("\r\2\2JK\7\17\2\2K\r\3\2\2\2LM\7\f\2\2MN\7\16\2\2NO\7")
+        buf.write("\t\2\2OP\7\16\2\2PQ\7\r\2\2QR\7\17\2\2R\17\3\2\2\2\b\25")
+        buf.write("\34!&(:")
         return buf.getvalue()
 
 
@@ -44,10 +49,11 @@ class ERPLParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "':'", "'def'", "'exit'", "'add'", "'process'", 
-                     "'role'", "'task'", "'start_task'", "'end'" ]
+                     "'role'", "'task'", "'start task'", "'end'", "'run'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "DEF", "EXIT", "ADD", "PROCESS", 
-                      "ROLE", "TASK", "STARTTASK", "END", "ID", "WS", "NEWLINE" ]
+                      "ROLE", "TASK", "STARTTASK", "END", "RUN", "ID", "WS", 
+                      "NEWLINE" ]
 
     RULE_s = 0
     RULE_q = 1
@@ -55,8 +61,9 @@ class ERPLParser ( Parser ):
     RULE_r = 3
     RULE_p = 4
     RULE_t = 5
+    RULE_i = 6
 
-    ruleNames =  [ "s", "q", "a", "r", "p", "t" ]
+    ruleNames =  [ "s", "q", "a", "r", "p", "t", "i" ]
 
     EOF = Token.EOF
     T__0=1
@@ -68,9 +75,10 @@ class ERPLParser ( Parser ):
     TASK=7
     STARTTASK=8
     END=9
-    ID=10
-    WS=11
-    NEWLINE=12
+    RUN=10
+    ID=11
+    WS=12
+    NEWLINE=13
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -117,7 +125,7 @@ class ERPLParser ( Parser ):
         self.enterRule(localctx, 0, self.RULE_s)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 12
+            self.state = 14
             self.q()
         except RecognitionException as re:
             localctx.exception = re
@@ -171,19 +179,19 @@ class ERPLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 15 
+            self.state = 17 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 14
+                self.state = 16
                 self.a()
-                self.state = 17 
+                self.state = 19 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==ERPLParser.DEF):
+                if not (_la==ERPLParser.DEF or _la==ERPLParser.RUN):
                     break
 
-            self.state = 19
+            self.state = 21
             self.match(ERPLParser.EXIT)
         except RecognitionException as re:
             localctx.exception = re
@@ -214,6 +222,13 @@ class ERPLParser ( Parser ):
                 return self.getTypedRuleContext(ERPLParser.PContext,i)
 
 
+        def i(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(ERPLParser.IContext)
+            else:
+                return self.getTypedRuleContext(ERPLParser.IContext,i)
+
+
         def getRuleIndex(self):
             return ERPLParser.RULE_a
 
@@ -239,34 +254,59 @@ class ERPLParser ( Parser ):
         localctx = ERPLParser.AContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_a)
         try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 22 
+            self.state = 38
             self._errHandler.sync(self)
-            _alt = 1
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt == 1:
-                    self.state = 21
-                    self.r()
-
-                else:
-                    raise NoViableAltException(self)
+            token = self._input.LA(1)
+            if token in [ERPLParser.DEF]:
+                self.enterOuterAlt(localctx, 1)
                 self.state = 24 
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
+                _alt = 1
+                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                    if _alt == 1:
+                        self.state = 23
+                        self.r()
 
-            self.state = 27 
-            self._errHandler.sync(self)
-            _alt = 1
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt == 1:
-                    self.state = 26
-                    self.p()
+                    else:
+                        raise NoViableAltException(self)
+                    self.state = 26 
+                    self._errHandler.sync(self)
+                    _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
 
-                else:
-                    raise NoViableAltException(self)
                 self.state = 29 
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
+                _alt = 1
+                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                    if _alt == 1:
+                        self.state = 28
+                        self.p()
+
+                    else:
+                        raise NoViableAltException(self)
+                    self.state = 31 
+                    self._errHandler.sync(self)
+                    _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
+
+                pass
+            elif token in [ERPLParser.RUN]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 34 
+                self._errHandler.sync(self)
+                _alt = 1
+                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                    if _alt == 1:
+                        self.state = 33
+                        self.i()
+
+                    else:
+                        raise NoViableAltException(self)
+                    self.state = 36 
+                    self._errHandler.sync(self)
+                    _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
+
+                pass
+            else:
+                raise NoViableAltException(self)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -327,17 +367,17 @@ class ERPLParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_r)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 31
+            self.state = 40
             self.match(ERPLParser.DEF)
-            self.state = 32
+            self.state = 41
             self.match(ERPLParser.WS)
-            self.state = 33
+            self.state = 42
             self.match(ERPLParser.ROLE)
-            self.state = 34
+            self.state = 43
             self.match(ERPLParser.WS)
-            self.state = 35
+            self.state = 44
             self.match(ERPLParser.ID)
-            self.state = 36
+            self.state = 45
             self.match(ERPLParser.NEWLINE)
         except RecognitionException as re:
             localctx.exception = re
@@ -415,37 +455,37 @@ class ERPLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 38
+            self.state = 47
             self.match(ERPLParser.DEF)
-            self.state = 39
+            self.state = 48
             self.match(ERPLParser.WS)
-            self.state = 40
+            self.state = 49
             self.match(ERPLParser.PROCESS)
-            self.state = 41
+            self.state = 50
             self.match(ERPLParser.WS)
-            self.state = 42
+            self.state = 51
             self.match(ERPLParser.ID)
-            self.state = 43
+            self.state = 52
             self.match(ERPLParser.NEWLINE)
-            self.state = 45 
+            self.state = 54 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 44
+                self.state = 53
                 self.t()
-                self.state = 47 
+                self.state = 56 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==ERPLParser.ADD):
                     break
 
-            self.state = 49
+            self.state = 58
             self.match(ERPLParser.END)
-            self.state = 50
+            self.state = 59
             self.match(ERPLParser.WS)
-            self.state = 51
+            self.state = 60
             self.match(ERPLParser.PROCESS)
-            self.state = 52
+            self.state = 61
             self.match(ERPLParser.NEWLINE)
         except RecognitionException as re:
             localctx.exception = re
@@ -513,30 +553,101 @@ class ERPLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 54
+            self.state = 63
             self.match(ERPLParser.ADD)
-            self.state = 55
+            self.state = 64
             self.match(ERPLParser.WS)
-            self.state = 56
+            self.state = 65
             _la = self._input.LA(1)
             if not(_la==ERPLParser.TASK or _la==ERPLParser.STARTTASK):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
                 self.consume()
-            self.state = 57
+            self.state = 66
             self.match(ERPLParser.WS)
-            self.state = 58
+            self.state = 67
             self.match(ERPLParser.ID)
-            self.state = 59
+            self.state = 68
             self.match(ERPLParser.WS)
-            self.state = 60
+            self.state = 69
             self.match(ERPLParser.T__0)
-            self.state = 61
+            self.state = 70
             self.match(ERPLParser.WS)
-            self.state = 62
+            self.state = 71
             self.match(ERPLParser.ID)
-            self.state = 63
+            self.state = 72
+            self.match(ERPLParser.NEWLINE)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class IContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def RUN(self):
+            return self.getToken(ERPLParser.RUN, 0)
+
+        def WS(self, i:int=None):
+            if i is None:
+                return self.getTokens(ERPLParser.WS)
+            else:
+                return self.getToken(ERPLParser.WS, i)
+
+        def TASK(self):
+            return self.getToken(ERPLParser.TASK, 0)
+
+        def ID(self):
+            return self.getToken(ERPLParser.ID, 0)
+
+        def NEWLINE(self):
+            return self.getToken(ERPLParser.NEWLINE, 0)
+
+        def getRuleIndex(self):
+            return ERPLParser.RULE_i
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterI" ):
+                listener.enterI(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitI" ):
+                listener.exitI(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitI" ):
+                return visitor.visitI(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def i(self):
+
+        localctx = ERPLParser.IContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 12, self.RULE_i)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 74
+            self.match(ERPLParser.RUN)
+            self.state = 75
+            self.match(ERPLParser.WS)
+            self.state = 76
+            self.match(ERPLParser.TASK)
+            self.state = 77
+            self.match(ERPLParser.WS)
+            self.state = 78
+            self.match(ERPLParser.ID)
+            self.state = 79
             self.match(ERPLParser.NEWLINE)
         except RecognitionException as re:
             localctx.exception = re

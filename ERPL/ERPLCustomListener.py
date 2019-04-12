@@ -1,10 +1,65 @@
 from ERPLListener import ERPLListener as EL
 from ERPLParser import ERPLParser
+import sqlite3
+import os
+import sys
+import subprocess
 
 class ERPLCustomListener(EL) :
     idP = []
     idR = []
     idT = {}
+    dbname = ''
+
+    def create_table(self):
+        print("h----------------------------------------------------------------------------------i")
+        sql_create_roles_table = """ CREATE TABLE IF NOT EXISTS roles (
+                                                id integer PRIMARY KEY,
+                                                name text NOT NULL,
+                                                ); """
+
+        sql_create_tasks_table = """CREATE TABLE IF NOT EXISTS tasks (
+                                            id integer PRIMARY KEY,
+                                            name text NOT NULL,
+                                            role_id integer NOT NULL,
+                                            FOREIGN KEY (role_id) REFERENCES roles (id)
+                                        );"""
+
+        # create a database connection
+        print(self.dbname, 'zaiiiiii')
+        conn = sqlite3.connect(self.dbname+'.db')
+        print("hello")
+        if conn is not None:
+            print("not none")
+            # create projects table
+            try:
+                print('lekja')
+                c = conn.cursor()
+                print('hjh')
+                c.execute(sql_create_roles_table)
+                print("successful!")
+                conn.commit()
+            except Exception as e:
+                print(e)
+            try:
+                c = conn.cursor()
+                c.execute(sql_create_tasks_table)
+                conn.commit()
+            except Exception as e:
+                print(e)
+        else:
+            print("Error! cannot create the database connection.")
+
+    def insert_role(role_name):
+        sql = 'INSERT INTO roles(name) VALUES(?)'
+        cur = sqlite3.connect(ERPLCustomListener.dbname+'.db').cursor()
+        cur.execute(sql, (role_name))
+
+    def insert_task(task_name, role_name):
+        sql = 'INSERT INTO bar (description, foo_id) VALUES( ?, ?),'
+        cur = sqlite3.connect(ERPLCustomListener.dbname+'.db').cursor()
+        cur.execute(sql, (task_name, 'SELECT id from roles WHERE type=' + role_name))
+
     def enterS(self, ctx:ERPLParser.SContext):
         pass
 
@@ -19,10 +74,11 @@ class ERPLCustomListener(EL) :
 
     # Exit a parse tree produced by ERPLParser#q.
     def exitQ(self, ctx:ERPLParser.QContext):
-        print(ctx.getText())
-        print(self.idR)
-        print(self.idP)
-        print(self.idT)
+        # print(ctx.getText())
+        # print(self.idR)
+        # print(self.idP)
+        # print(self.idT)
+        pass
 
 
     # Enter a parse tree produced by ERPLParser#a.
@@ -49,6 +105,18 @@ class ERPLCustomListener(EL) :
 
     # Exit a parse tree produced by ERPLParser#p.
     def exitP(self, ctx:ERPLParser.PContext):
+        #global dbname
+        self.dbname = ctx.ID().getText()
+        print(self.dbname)
+        conn = sqlite3.connect(self.dbname + '.db')
+        conn.commit()
+        print('ki')
+        ERPLCustomListener.create_table(self)
+        for i in self.idR:
+            ERPLCustomListener.insert_role(i)
+        for i in self.idT:
+            ERPLCustomListener.insert_task(i, self.idT[i])
+
         self.idP.append(ctx.ID().getText())
 
 
@@ -63,3 +131,13 @@ class ERPLCustomListener(EL) :
             self.idT[a[0].getText()] = a[1].getText()
         else:
             print('Error! Role not found - ' + a[1].getText())
+
+    # Enter a parse tree produced by ERPLParser#i.
+    def enterI(self, ctx:ERPLParser.IContext):
+        pass
+
+    # Exit a parse tree produced by ERPLParser#i.
+    def exitI(self, ctx:ERPLParser.IContext):
+        os.system("python "+ ctx.ID().getText() +".py" )
+        # s2_out = subprocess.check_output(["python ", ctx.ID().getText() +".py", "34"])
+        # print(s2_out)

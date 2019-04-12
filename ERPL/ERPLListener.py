@@ -62,3 +62,12 @@ class ERPLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ERPLParser#i.
+    def enterI(self, ctx:ERPLParser.IContext):
+        pass
+
+    # Exit a parse tree produced by ERPLParser#i.
+    def exitI(self, ctx:ERPLParser.IContext):
+        pass
+
+

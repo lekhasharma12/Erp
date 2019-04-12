@@ -20,10 +20,11 @@ grammar ERPL;
 // d : o ID ;r
 s : q ;
 q : a+ EXIT ;
-a : r+ p+;
+a : r+ p+ | i+;
 r : DEF WS ROLE WS ID NEWLINE ;
 p : DEF WS PROCESS WS ID NEWLINE t+ END WS PROCESS NEWLINE;
 t : ADD WS (STARTTASK |TASK) WS ID WS ':' WS ID NEWLINE ;
+i : RUN WS TASK WS ID NEWLINE;
 
 DEF : 'def' ;
 EXIT : 'exit';
@@ -33,6 +34,7 @@ ROLE : 'role' ;
 TASK : 'task' ;
 STARTTASK : 'start task' ;
 END : 'end' ;
+RUN : 'run' ;
 ID : [A-Za-z_]+ ;
 WS : (' ' | '\t') ;
 NEWLINE : ('\r'? '\n' | '\r')+ ;

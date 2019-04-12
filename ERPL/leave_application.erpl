@@ -1,0 +1,4 @@
+run task insert_second
+run task calculate
+
+exit
