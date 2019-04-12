@@ -5,6 +5,7 @@ import os
 import sys
 import subprocess
 
+
 class ERPLCustomListener(EL) :
     idP = []
     idR = []
@@ -12,32 +13,17 @@ class ERPLCustomListener(EL) :
     dbname = ''
 
     def create_table(self):
-        print("h----------------------------------------------------------------------------------i")
-        sql_create_roles_table = """ CREATE TABLE IF NOT EXISTS roles (
-                                                id integer PRIMARY KEY,
-                                                name text NOT NULL,
-                                                ); """
+        sql_create_roles_table = " CREATE TABLE IF NOT EXISTS roles (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(32) NOT NULL); "
 
-        sql_create_tasks_table = """CREATE TABLE IF NOT EXISTS tasks (
-                                            id integer PRIMARY KEY,
-                                            name text NOT NULL,
-                                            role_id integer NOT NULL,
-                                            FOREIGN KEY (role_id) REFERENCES roles (id)
-                                        );"""
+        sql_create_tasks_table = "CREATE TABLE IF NOT EXISTS  tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(32) NOT NULL, role_id int NOT NULL, FOREIGN KEY (role_id) REFERENCES roles (id));"
 
         # create a database connection
-        print(self.dbname, 'zaiiiiii')
         conn = sqlite3.connect(self.dbname+'.db')
-        print("hello")
         if conn is not None:
-            print("not none")
             # create projects table
             try:
-                print('lekja')
                 c = conn.cursor()
-                print('hjh')
                 c.execute(sql_create_roles_table)
-                print("successful!")
                 conn.commit()
             except Exception as e:
                 print(e)
@@ -50,15 +36,23 @@ class ERPLCustomListener(EL) :
         else:
             print("Error! cannot create the database connection.")
 
-    def insert_role(role_name):
-        sql = 'INSERT INTO roles(name) VALUES(?)'
-        cur = sqlite3.connect(ERPLCustomListener.dbname+'.db').cursor()
-        cur.execute(sql, (role_name))
+    def insert_role(self, role_name):
+        conn = sqlite3.connect(self.dbname+'.db')
+        cur = conn.cursor()
+        cur.execute('INSERT INTO roles(name) VALUES(?)', (role_name, ))
+        conn.commit()
+        conn.close()
+        cur = sqlite3.connect(self.dbname + '.db').cursor()
+        c = cur.execute('SELECT * FROM roles')
+        c = c.fetchall()
+        print(c)
 
-    def insert_task(task_name, role_name):
-        sql = 'INSERT INTO bar (description, foo_id) VALUES( ?, ?),'
-        cur = sqlite3.connect(ERPLCustomListener.dbname+'.db').cursor()
-        cur.execute(sql, (task_name, 'SELECT id from roles WHERE type=' + role_name))
+    def insert_task(self, task_name, role_name):
+        conn = sqlite3.connect(self.dbname + '.db')
+        cur = conn.cursor()
+        cur.execute('INSERT INTO tasks (name, role_id) VALUES( ?, ?)', (task_name, 'SELECT id from roles WHERE name=' + role_name,))
+        conn.commit()
+        conn.close()
 
     def enterS(self, ctx:ERPLParser.SContext):
         pass
@@ -113,9 +107,9 @@ class ERPLCustomListener(EL) :
         print('ki')
         ERPLCustomListener.create_table(self)
         for i in self.idR:
-            ERPLCustomListener.insert_role(i)
+            ERPLCustomListener.insert_role(self, i)
         for i in self.idT:
-            ERPLCustomListener.insert_task(i, self.idT[i])
+            ERPLCustomListener.insert_task(self, i, self.idT[i])
 
         self.idP.append(ctx.ID().getText())
 
@@ -132,7 +126,8 @@ class ERPLCustomListener(EL) :
         else:
             print('Error! Role not found - ' + a[1].getText())
 
-    # Enter a parse tree produced by ERPLParser#i.
+
+
     def enterI(self, ctx:ERPLParser.IContext):
         pass
 
@@ -141,3 +136,4 @@ class ERPLCustomListener(EL) :
         os.system("python "+ ctx.ID().getText() +".py" )
         # s2_out = subprocess.check_output(["python ", ctx.ID().getText() +".py", "34"])
         # print(s2_out)
+
